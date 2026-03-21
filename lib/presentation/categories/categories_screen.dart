@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:machinetaskalisoninfotech/presentation/categories/categories_product_card.dart';
+import 'package:machinetaskalisoninfotech/presentation/product_details/product_details.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -72,8 +73,10 @@ class CategoriesScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: false,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black87),
-          onPressed: () {},
+          icon: const Icon(Icons.arrow_back, color: Color(0xff222222)),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +84,7 @@ class CategoriesScreen extends StatelessWidget {
             Text(
               'Unpolished Pulses',
               style: TextStyle(
-                color: Colors.black87,
+                color: Color(0xff222222),
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -94,11 +97,11 @@ class CategoriesScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search, color: Colors.black87),
+            icon: const Icon(Icons.search, color: Color(0xff222222)),
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.shopping_bag, color: Colors.black87),
+            icon: const Icon(Icons.shopping_bag, color: Color(0xff222222)),
             onPressed: () {},
           ),
         ],
@@ -119,12 +122,19 @@ class CategoriesScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final product = products[index];
 
-                return CategoriesProductCard(
-                  title: product['title'],
-                  currentPrice: product['currentPrice'],
-                  oldPrice: product['oldPrice'],
-                  discount: product['discount'],
-                  initialAdded: product['initialAdded'],
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProductDetails()),
+                    );
+                  },
+                  child: CategoriesProductCard(
+                    title: product['title'],
+                    currentPrice: product['currentPrice'],
+                    oldPrice: product['oldPrice'],
+                    discount: product['discount'],
+                    initialAdded: product['initialAdded'],
+                  ),
                 );
               },
             ),

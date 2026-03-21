@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:machinetaskalisoninfotech/presentation/categories/categories_screen.dart';
 import 'package:machinetaskalisoninfotech/presentation/home/widgets/bannerwidget.dart';
 import 'package:machinetaskalisoninfotech/presentation/home/widgets/product_card.dart';
 import 'package:machinetaskalisoninfotech/presentation/home/widgets/section_header.dart';
+import 'package:machinetaskalisoninfotech/presentation/product_details/product_details.dart';
 
 class Homescreen extends StatelessWidget {
   const Homescreen({super.key});
@@ -128,15 +130,24 @@ class Homescreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 12),
         itemCount: categories.length,
-        itemBuilder: (contest, index) {
+        itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 35,
-                  backgroundColor: Colors.brown[100],
-                  child: Image.asset(categories[index]['imageurl'] ?? ''),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => CategoriesScreen(),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 35,
+                    backgroundColor: Colors.brown[100],
+                    child: Image.asset(categories[index]['imageurl'] ?? ''),
+                  ),
                 ),
                 SizedBox(height: 8),
                 Text(
@@ -160,11 +171,18 @@ class Homescreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 5),
         itemCount: 4,
         itemBuilder: (context, index) {
-          return ProductCard(
-            category: 'Flours & Sugars',
-            title: 'Light pink salt 1 kg',
-            oldPrice: '₹ 80.00',
-            currentPrice: '₹ 62.00',
+          return InkWell(
+            onTap: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => ProductDetails()));
+            },
+            child: ProductCard(
+              category: 'Flours & Sugars',
+              title: 'Light pink salt 1 kg',
+              oldPrice: '₹ 80.00',
+              currentPrice: '₹ 62.00',
+            ),
           );
         },
       ),
