@@ -98,7 +98,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
+            SizedBox(height: 8),
             SizedBox(
               width: double.infinity,
               height: 36,

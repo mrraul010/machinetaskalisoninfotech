@@ -80,8 +80,43 @@ class Homescreen extends StatelessWidget {
             Divider(color: Color(0xffF2F2F2), thickness: 10),
             SectionHeader(title: 'Featured Products'),
             _buildProductCard(),
+            SizedBox(height: 24),
+            SectionHeader(title: 'Daily Best Selling'),
+            _buildProductCard(),
+            SizedBox(height: 24),
+            Bannerwidget(bannerimages: banners),
+            SizedBox(height: 24),
+            SectionHeader(title: 'Recently Added'),
+            _buildProductCard(),
+            SizedBox(height: 24),
+            SectionHeader(title: 'Popular Products'),
+            _buildProductCard(),
+            SizedBox(height: 24),
+            SectionHeader(title: 'Trending Products'),
+            _buildProductCard(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Color(0xff7C2F02),
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.grid_view),
+            label: 'Categories',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: 'Cart',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
