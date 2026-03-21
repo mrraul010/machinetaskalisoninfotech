@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:machinetaskalisoninfotech/presentation/categories/categories_screen.dart';
 import 'package:machinetaskalisoninfotech/presentation/home/homescreen.dart';
 import 'package:machinetaskalisoninfotech/presentation/login/login_screen.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Lufga',
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Homescreen(),
+      home: CategoriesScreen(),
     );
   }
 }
