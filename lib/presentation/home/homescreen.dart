@@ -5,6 +5,11 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List banners = [
+      'https://sungod.demospro2023.in.net/public/images/banner/1727092578_1_GZcLMy9jowYOZhwvfJScbCfrpNjTgQ2PvondelHc.png',
+      'https://sungod.demospro2023.in.net/public/images/banner/1727080040_1_WPhAwjaJiocPPjawfjplZObpRFcvGJMcV9HcTKZ8.png',
+      'https://sungod.demospro2023.in.net/public/images/banner/1727080926_1_Frame 32.webp',
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff7C2F02),
@@ -35,6 +40,31 @@ class Homescreen extends StatelessWidget {
           ),
         ],
       ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 16),
+
+            SizedBox(
+              height: 160,
+              child: PageView.builder(
+                controller: PageController(viewportFraction: 0.93),
+                itemCount: banners.length,
+                itemBuilder: (context, index) {
+                  return _buildPromoBannerItem(imageurls: banners[index]);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPromoBannerItem({required String imageurls}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      child: Container(child: Image.network(imageurls, fit: BoxFit.contain)),
     );
   }
 }
